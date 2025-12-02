@@ -1,13 +1,17 @@
-import React from "react";
-import HomePage from "./containers/Home"; // make sure path is correct
+import './App.css';
+
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
+import Router from './Router';
+
 
 function App() {
-  return (
-    <div className="App">
-      <HomePage />
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Router />
+		</BrowserRouter>
+	);
 }
 
 export default App;
-
