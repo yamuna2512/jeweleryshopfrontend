@@ -1,37 +1,29 @@
 import axios from "axios";
-// require('dotenv').config()
 
 export const LOGIN_USER_KEY = "HIVE_TECHWEAR_LOGIN_USER_KEY";
-// const { REACT_APP_ENVIRONMENT, REACT_APP_API_BASE_URL_PROD, REACT_APP_API_BASE_URL_DEV } = process.env;
-
-  const baseURL = "http://127.0.0.1:8000/api";
 
 const api = axios.create({
-  baseURL: baseURL,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: "http://127.0.0.1:8000/api",
+  headers: { "Content-Type": "application/json" },
 });
 
-// TOKEN HANDLING
-
+/* ----------------------- TOKEN HANDLING ------------------------ */
 api.interceptors.request.use(
   (config) => {
     if (config.requireToken) {
-      const user = localStorage.getItem(LOGIN_USER_KEY)
-        ? JSON.parse(localStorage.getItem(LOGIN_USER_KEY))
-        : null;
+      const stored = localStorage.getItem(LOGIN_USER_KEY);
+      const user = stored ? JSON.parse(stored) : null;
+
       if (user?.token) {
-        config.headers.common["Authorization"] = `Bearer ${user.token}`;
+        config.headers["Authorization"] = `Bearer ${user.token}`;
       }
     }
     return config;
   },
-  (err) => console.error(err)
+  (err) => Promise.reject(err)
 );
 
-// RESPONSE HANDLER
-
+/* ---------------------- RESPONSE HANDLER ----------------------- */
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
@@ -44,38 +36,42 @@ api.interceptors.response.use(
   }
 );
 
-// USER SIGNUP
-  signUp = async (signUpBody) => {
-    const formData = new FormData();
-    Object.keys(signUpBody).forEach((key) =>
-      formData.append(key, signUpBody[key])
-    );
+/* --------------------- AUTH ENDPOINTS -------------------------- */
+export const signUp = (body) => {
+  const form = new FormData();
+  Object.keys(body).forEach((key) => form.append(key, body[key]));
 
-    // FIX 2: Correct endpoint
-    return api.post("/users/signup/", formData);
-  };
+  return api.post("/users/signup/", form);
+};
 
+export const signIn = (body) => {
+  const form = new FormData();
+  Object.keys(body).forEach((key) => form.append(key, body[key]));
 
-   // USER LOGIN
-  signIn = async (signInBody) => {
-    const formData = new FormData();
-    Object.keys(signInBody).forEach((key) =>
-      formData.append(key, signInBody[key])
-    );
+  return api.post("/users/signin/", form);
+};
 
-    // FIX 2: Correct endpoint
-    return api.post("/users/signin/", formData);
-  };
-const BASE_URL = "http://127.0.0.1:8000/products/";
+/* --------------------- CATEGORY & PRODUCT ---------------------- */
+export const getCategories = () => api.get("/categories/");
+export const getProducts = () => api.get("/products/");
+export const getProduct = (id) => api.get(`/products/${id}/`);
 
-export async function fetchCategories() {
-  const res = await fetch(BASE_URL + "categories/");
-  if (!res.ok) throw new Error("Failed to load categories");
-  return res.json();
-}
+/* --------------------- CART HANDLING --------------------------- */
+export const getCart = () =>
+  api.get("/cart/", { requireToken: true });
 
-export async function fetchProducts() {
-  const res = await fetch(BASE_URL + "products/");
-  if (!res.ok) throw new Error("Failed to load products");
-  return res.json();
-}
+export const addToCart = (product_id, qty = 1) =>
+  api.post(
+    "/cart/add/",
+    { product_id, quantity: qty },
+    { requireToken: true }
+  );
+
+export const removeFromCart = (item_id) =>
+  api.post(
+    "/cart/remove/",
+    { item_id },
+    { requireToken: true }
+  );
+
+export default api;
