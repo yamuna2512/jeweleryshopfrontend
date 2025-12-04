@@ -1,77 +1,120 @@
 import axios from "axios";
+require("dotenv").config();
 
-export const LOGIN_USER_KEY = "HIVE_TECHWEAR_LOGIN_USER_KEY";
+export const LOGIN_USER_KEY = "JEWELLERY_LOGIN_USER";
 
+// ===== BASE URL =====
+let baseURL;
+baseURL = "http://127.0.0.1:8000"; // your Django backend
+
+// ===== AXIOS INSTANCE =====
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: baseURL,
   headers: { "Content-Type": "application/json" },
 });
 
-/* ----------------------- TOKEN HANDLING ------------------------ */
+// ===== REQUEST INTERCEPTOR =====
 api.interceptors.request.use(
   (config) => {
     if (config.requireToken) {
-      const stored = localStorage.getItem(LOGIN_USER_KEY);
-      const user = stored ? JSON.parse(stored) : null;
+      const userData = localStorage.getItem(LOGIN_USER_KEY)
+        ? JSON.parse(localStorage.getItem(LOGIN_USER_KEY))
+        : null;
 
-      if (user?.token) {
-        config.headers["Authorization"] = `Bearer ${user.token}`;
+      if (userData && userData.token) {
+        config.headers.common["Authorization"] = `Token ${userData.token}`;
       }
     }
     return config;
   },
-  (err) => Promise.reject(err)
+  (err) => console.error(err)
 );
 
-/* ---------------------- RESPONSE HANDLER ----------------------- */
+// ===== RESPONSE INTERCEPTOR =====
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
-    console.log("API Error:", error);
+    console.error("API Error:", error);
 
     if (error.response && error.response.status === 401) {
       localStorage.removeItem(LOGIN_USER_KEY);
     }
+
     return Promise.reject(error);
   }
 );
 
-/* --------------------- AUTH ENDPOINTS -------------------------- */
-export const signUp = (body) => {
-  const form = new FormData();
-  Object.keys(body).forEach((key) => form.append(key, body[key]));
+// ========== EXPORT API CLASS ==========
+export default class API {
+  // =================== AUTH ===================
 
-  return api.post("/users/signup/", form);
-};
+  signUp = async (body) => {
+    const formData = new FormData();
+    for (const key in body) formData.append(key, body[key]);
+    return api.post("/Users/signup/", formData);
+  };
 
-export const signIn = (body) => {
-  const form = new FormData();
-  Object.keys(body).forEach((key) => form.append(key, body[key]));
+  signIn = async (body) => {
+    const formData = new FormData();
+    for (const key in body) formData.append(key, body[key]);
+    return api.post("/Users/signin/", formData);
+  };
 
-  return api.post("/users/signin/", form);
-};
+  getProfile = () => {
+    return api.get("/Users/profile/", { requireToken: true });
+  };
 
-/* --------------------- CATEGORY & PRODUCT ---------------------- */
-export const getCategories = () => api.get("/categories/");
-export const getProducts = () => api.get("/products/");
-export const getProduct = (id) => api.get(`/products/${id}/`);
+  // =================== CATEGORIES ===================
 
-/* --------------------- CART HANDLING --------------------------- */
-export const getCart = () =>
-  api.get("/cart/", { requireToken: true });
+  getCategories = () => {
+    return api.get("/products/categories/");
+  };
 
-export const addToCart = (product_id, qty = 1) =>
-  api.post(
-    "/cart/add/",
-    { product_id, quantity: qty },
-    { requireToken: true }
-  );
+  getSubCategories = (categoryId) => {
+    return api.get("/products/subcategories/", {
+      params: { category_id: categoryId },
+    });
+  };
 
-export const removeFromCart = (item_id) =>
-  api.post(
-    "/cart/remove/",
-    { item_id },
-    { requireToken: true }
-  );
+  // =================== PRODUCTS ===================
 
-export default api;
+  getProducts = (query = {}) => {
+    return api.get("/products/products/", { params: query });
+  };
+
+  getProductDetail = (id) => {
+    return api.get(`/products/products/${id}/`);
+  };
+
+  // =================== CART ===================
+
+  getCart = () => {
+    return api.get("/products/cart/", { requireToken: true });
+  };
+
+  addToCart = (body) => {
+    const formData = new FormData();
+    for (const key in body) formData.append(key, body[key]);
+    return api.post("/products/cart/add/", formData, { requireToken: true });
+  };
+
+  removeCartItem = (id) => {
+    return api.delete(`/products/cart/remove/${id}/`, {
+      requireToken: true,
+    });
+  };
+
+  // =================== WISHLIST ===================
+
+  getWishlist = () => {
+    return api.get("/products/wishlist/", { requireToken: true });
+  };
+
+  addWishlist = (body) => {
+    const formData = new FormData();
+    for (const key in body) formData.append(key, body[key]);
+    return api.post("/products/wishlist/add/", formData, { requireToken: true });
+  };
+
+  
+}
