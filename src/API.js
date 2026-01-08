@@ -3,7 +3,7 @@ import axios from "axios";
 export const LOGIN_USER_KEY = "JEWEL_STORE_USER";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "https://jeweleryshopbackend.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
