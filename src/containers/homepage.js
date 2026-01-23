@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+
+
 
 // Components
 import BannerSlide from "../components/homepage/bannerslide";
@@ -26,6 +29,8 @@ const HomePage = () => {
   const categories = useSelector(getCategories);
   const subcategories = useSelector(getSubCategories);
   const products = useSelector(getProducts);
+  const location = useLocation();
+
 
   //  TWO STATES (REQUIRED)
   const [activeCategory, setActiveCategory] = useState(null);
@@ -37,22 +42,51 @@ const HomePage = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  //  PRODUCT FILTER LOGIC
- const filteredProducts = products.filter((product) => {
-  // No category selected → show all
-  if (!activeCategory) return true;
-
-  // Category selected but "All" subcategory → show all category products
-  if (!activeSubCategory || activeSubCategory === "all") {
-    return product.category === activeCategory;
+  useEffect(() => {
+  if (location.state?.resetFilters) {
+    setActiveCategory(null);
+    setActiveSubCategory(null);
   }
+}, [location.state]);
 
-  // Specific subcategory selected
-  return (
-    product.category === activeCategory &&
-    product.subcategory === activeSubCategory
-  );
-});
+
+//   //  PRODUCT FILTER LOGIC
+//  const filteredProducts = products.filter((product) => {
+//   // No category selected → show all
+//   if (!activeCategory) return true;
+
+//   // Category selected but "All" subcategory → show all category products
+//   if (!activeSubCategory || activeSubCategory === "all") {
+//     return product.category === activeCategory;
+//   }
+
+//   // Specific subcategory selected
+//   return (
+//     product.category === activeCategory &&
+//     product.subcategory === activeSubCategory
+//   );
+// });
+
+
+const isFiltering = activeCategory || activeSubCategory;
+
+// If user is browsing normally → apply category filter
+const filteredProducts = isFiltering
+  ? products.filter((product) => {
+      if (!activeCategory) return true;
+
+      if (!activeSubCategory || activeSubCategory === "all") {
+        return product.category === activeCategory;
+      }
+
+      return (
+        product.category === activeCategory &&
+        product.subcategory === activeSubCategory
+      );
+    })
+  : products;
+
+
 
   return (
     <div className="homepage">
