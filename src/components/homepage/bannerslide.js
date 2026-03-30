@@ -11,6 +11,7 @@ const BannerSlide = () => {
         <h2>Discover the Sparkle in You</h2>
       </div>
     </div>
+      
   );
 };
 
