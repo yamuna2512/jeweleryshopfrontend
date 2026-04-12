@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "../assets/styles/productdetails.css";
 import { addCart, fetchCarts } from "../reducks/cart/operations";
+import { isUserSignedIn } from "../reducks/users/selectors";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -13,14 +14,21 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  const isSignedIn = useSelector(isUserSignedIn);
+
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/products/${id}/`)
+      .get(`https://jeweleryshopbackend.onrender.com/api/products/${id}/`)
       .then((res) => setProduct(res.data));
   }, [id]);
 
   const handleBuyNow = async () => {
     if (!product) return;
+
+    if (!isSignedIn) {
+      history.push("/sign-in");
+      return;
+    }
     
     setLoading(true);
     console.log("🛒 Buy Now - Adding to cart:", { product_id: product.id, quantity });

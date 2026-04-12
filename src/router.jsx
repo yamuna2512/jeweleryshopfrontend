@@ -10,7 +10,8 @@ import SignUp from "./containers/signup";
 import ProductDetails from "./containers/productdetails";
 import Cart from "./containers/cart";
 import Wishlist from "./containers/wishlist";
-
+import AboutPage from "./components/homepage/aboutpage";
+import ContactPage from "./components/homepage/contactpage";
 import { isUserSignedIn } from "./reducks/users/selectors";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -29,6 +30,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const RouterConfig = () => (
   <Switch>
     <Route exact path="/" component={Homepage} />
+    <Route path="/about" component={AboutPage} />
+    <Route path="/contact" component={ContactPage} />
     <Route path="/sign-in" component={SignIn} />
     <Route path="/sign-up" component={SignUp} />
     <Route path="/product/:id" component={ProductDetails} />

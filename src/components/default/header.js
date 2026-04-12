@@ -4,6 +4,7 @@ import React, { useEffect,  useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaHeart, FaShoppingCart, FaSearch } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaGem, FaEnvelope } from "react-icons/fa";
 
 import "../../assets/styles/headerfooter.css";
 
@@ -58,10 +59,10 @@ const handleSearch = (e) => {
 
         {/* Navigation */}
         <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/collections">Collections</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/"> <FaHome /><span>Home</span></Link>
+          <Link to="/"><FaGem /> Collections</Link>
+          <Link to="/about"> <FaInfoCircle /> About</Link>
+          <Link to="/contact"> <FaEnvelope />Contact</Link>
         </nav>
 
        {/*  Search Bar */}

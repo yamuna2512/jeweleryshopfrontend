@@ -1,0 +1,91 @@
+.about-container {
+  background: #d9d2c3;
+  padding: 60px 40px;
+}
+
+/* Top section */
+.about-top {
+  display: flex;
+  gap: 60px;
+}
+
+.about-title h1 {
+  font-size: 70px;
+  margin: 0;
+  color:goldenrod
+}
+
+.about-text {
+  display: flex;
+  gap: 30px;
+}
+
+/* Slider */
+.about-gallery {
+  margin-top: 80px;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ===== ARROWS ===== */
+
+.arrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Right arrow */
+.next {
+  right: -10px;
+}
+
+/* Left arrow */
+.prev {
+  left: -10px;
+}
+
+/* Hover effect */
+.arrow:hover {
+  background: black;
+  color: white;
+}
+
+/* Fix slider position */
+.about-gallery {
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-top {
+    flex-direction: column;
+  }
+
+  .about-text {
+    flex-direction: column;
+  }
+
+  .about-title h1 {
+    font-size: 40px;
+  }
+}

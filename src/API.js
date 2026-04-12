@@ -16,7 +16,7 @@ api.interceptors.request.use((config) => {
   if (raw) {
     const user = JSON.parse(raw);
     if (user?.token) {
-      //  Correct header format for DRF TokenAuthentication
+      //  Correct header format for custom authentication
       config.headers.Authorization = user.token;
       console.log("ATTACHING TOKEN:", config.headers.Authorization);
     }
@@ -71,6 +71,7 @@ export default class API {
   /* ---------- CART ---------- */
   getCartItems = () => api.get("/products/cart/");
   addToCart = (data) => api.post("/products/cart/add/", data);
+  updateCart = (data, cartItemId) => api.put(`/products/cart/update/${cartItemId}/`, data);
   removeCartItem = (id) => api.delete(`/products/cart/remove/${id}/`);
 
   /* ---------- WISHLIST ---------- */

@@ -1,0 +1,87 @@
+/* Banner */
+.contact-banner {
+  width: 100%;
+  height: 300px;
+  background: url("../images/contact-banner.jpg") center/cover no-repeat;
+}
+
+/* Main Section */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 80px;
+  background: #f8f6f2;
+  font-family: "Georgia", serif;
+}
+
+/* Left Side */
+.contact-left {
+  width: 45%;
+}
+
+.contact-left h1 {
+  font-size: 40px;
+  color: goldenrod;
+  margin-bottom: 20px;
+}
+
+.contact-left p {
+  color: #444;
+  line-height: 1.6;
+}
+
+.contact-info p {
+  margin-top: 10px;
+}
+
+/* Right Side (Form) */
+.contact-right {
+  width: 45%;
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-right input,
+.contact-right textarea {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.contact-right textarea {
+  height: 120px;
+}
+
+.contact-right button {
+  padding: 12px;
+  background: goldenrod;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-right button:hover {
+  background: black;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .contact-left,
+  .contact-right {
+    width: 100%;
+  }
+
+  .contact-left h1 {
+    font-size: 30px;
+  }
+}

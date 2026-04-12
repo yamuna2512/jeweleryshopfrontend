@@ -8,6 +8,8 @@ import { toggleWishlist } from "../../reducks/wishlist/operations";
 // import { getWishlist } from "../../reducks/wishlist/selectors";
 import { isUserSignedIn } from "../../reducks/users/selectors";
 
+import { addToCart, removeFromCart } from "../../reducks/cart/operations";
+
 const ProductCard = ({ product }) => {
   const history = useHistory();
 
@@ -23,11 +25,35 @@ const ProductCard = ({ product }) => {
 
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.list);
+
+  const cartItems = useSelector((state) => state.cart.items) || [] ;
+
   const isSignedIn = useSelector(isUserSignedIn);
 
   const isWishlisted = wishlist.some(
     (item) => item.product.id === product.id
   );
+
+
+  const isInCart = cartItems.some(
+    (item) => item.product.id === product.id
+  );
+
+  const handleCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isSignedIn) {
+      history.push("/sign-in");
+      return;
+    }
+
+    if (isInCart) {
+      dispatch(removeFromCart(product.id));
+    } else {
+      dispatch(addToCart(product.id));
+    }
+  };
 
  const handleWishlist = (e) => {
        e.preventDefault();
@@ -74,6 +100,25 @@ const ProductCard = ({ product }) => {
         <p className="sku">SKU: {product.sku}</p>
         <p className="weight">{product.weight} g</p>
         <p className="price">₹ {product.price}</p>
+
+       {/* 🛒 CART BUTTON */}
+        <button
+          className="cart-btn"
+          onClick={handleCart}
+          style={{
+            marginTop: "10px",
+            padding: "8px",
+            width: "100%",
+            backgroundColor: isInCart ? "#ff4d4f" : "#dcac0e",
+            color: "#fff",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          {isInCart ? "Remove from Cart" : "Add to Cart"}
+        </button>
+
+
       </div>
     </div>
   );

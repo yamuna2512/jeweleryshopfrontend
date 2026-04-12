@@ -55,3 +55,44 @@ export const clearCarts = () => {
     dispatch(clearCartsAction());
   };
 };
+
+// ========================
+// 🛒 ADD TO CART (USED IN PRODUCT CARD)
+// ========================
+export const addToCart = (productId) => {
+  return async (dispatch) => {
+    try {
+      const body = {
+        product_id: productId,
+        quantity: 1,
+      };
+
+      const cart = await api.addToCart(body);
+
+      dispatch(addCartAction(cart));
+    } catch (error) {
+      console.error("ADD TO CART ERROR:", error);
+    }
+  };
+};
+
+
+export const removeFromCart = (productId) => {
+  return async (dispatch, getState) => {
+    try {
+      const state = getState();
+
+      const cartItem = state.cart.items.find(
+        (item) => item.product.id === productId
+      );
+
+      if (!cartItem) return;
+
+      await api.removeCart(cartItem.id);
+
+      dispatch(removeCartAction(cartItem.id));
+    } catch (error) {
+      console.error("REMOVE CART ERROR:", error);
+    }
+  };
+};
