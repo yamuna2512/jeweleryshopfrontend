@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-import Footer from '../components/default/Footer';
-import Header from '../components/default/Header';
+import Footer from './components/default/Footer';
+import Header from './components/default/Header';
 
 export default function ThankYou() {
     const history = useHistory()

@@ -59,8 +59,8 @@ const handleSearch = (e) => {
 
         {/* Navigation */}
         <nav className="nav-links">
-          <Link to="/"> <FaHome /><span>Home</span></Link>
-          <Link to="/"><FaGem /> Collections</Link>
+          <Link to="/homepage"> <FaHome /><span>Home</span></Link>
+          <Link to="/collections"> <FaGem /> Collections</Link>
           <Link to="/about"> <FaInfoCircle /> About</Link>
           <Link to="/contact"> <FaEnvelope />Contact</Link>
         </nav>
