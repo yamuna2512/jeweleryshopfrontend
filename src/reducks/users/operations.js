@@ -69,16 +69,19 @@ export const signIn = (email, password, callback) => {
     try {
       console.log("SENDING LOGIN DATA:", { email, password });
 
-      const res = await api.signIn({ email, password });
+       const response = await api.signIn({ email, password });
+        const data = response.data;
+
+      // const res = await api.signIn({ email, password });
 
       // backend response:
       // { id, first_name, last_name, email, token, token_expires }
 
       const user = {
-        id: res.id,
-        first_name: res.first_name,
-        email: res.email,
-        token: res.token,
+        id: data.id,
+        first_name: data.first_name,
+        email: data.email,
+        token: data.token,
       };
 
       localStorage.setItem(
@@ -90,7 +93,12 @@ export const signIn = (email, password, callback) => {
 
       if (callback) callback();
     } catch (error) {
-      console.error("LOGIN ERROR:", error.response?.data || error);
+      console.error(
+        "LOGIN ERROR:",
+        error.response?.status,
+        error.response?.data,
+        error.message
+      );
 
       dispatch(
         signInError({

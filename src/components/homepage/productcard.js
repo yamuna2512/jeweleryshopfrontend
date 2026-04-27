@@ -102,9 +102,17 @@ const ProductCard = ({ product }) => {
       <p className="price">$ {product.price}</p>
 
       {/* CART BUTTON */}
-      <button className="cart-btn" onClick={handleCart}>
+      {/* <button className="cart-btn" onClick={handleCart}>
         {isInCart ? "Remove from Cart" : "Add to Cart"}
-      </button>
+      </button> */}
+
+      <button
+  className={`cart-btn ${isInCart ? "remove" : ""}`}
+  onClick={handleCart}
+>
+  {isInCart ? "Remove from Cart" : "Add to Cart"}
+</button>
+
     </div>
   </div>
 );
