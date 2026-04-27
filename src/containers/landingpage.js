@@ -19,6 +19,10 @@ import banner1 from "../assets/images/banner1.jpg";
 import banner2 from "../assets/images/banner2.jpg";
 import banner3 from "../assets/images/banner3.jpg";
 
+// ✅ landing down IMAGES
+
+import l1 from "../assets/images/l1.png";
+
 // ⚠️ use this if React Router v6
 import { useHistory } from "react-router-dom";
 
@@ -41,9 +45,9 @@ const LandingPage = () => {
               <div className="hero-content">
                 <h1>Exquisite Premium Gold Jewelry</h1>
                 <p>Elevate Your Elegance with Luxurious Designs</p>
-                <button onClick={() => history.push("/homepage")}>
+                {/* <button onClick={() => history.push("/homepage")}>
                   🛍️ Shop Now
-                </button>
+                </button> */}
               </div>
             </div>
           </SwiperSlide>
@@ -56,11 +60,11 @@ const LandingPage = () => {
             >
               <div className="overlay"></div>
               <div className="hero-content">
-                <h1>50% OFF Today Only</h1>
-                <p>Limited Time Offer</p>
-                <button onClick={() => history.push("/homepage")}>
+                <h1>Antique Gold Jewelry</h1>
+                <p>Timeless Jewelry for Every Occasion</p>
+                {/* <button onClick={() => history.push("/homepage")}>
                   Shop Collection
-                </button>
+                </button> */}
               </div>
             </div>
           </SwiperSlide>
@@ -75,9 +79,9 @@ const LandingPage = () => {
               <div className="hero-content">
                 <h1>Luxury Diamond Collection</h1>
                 <p>Shine with Elegance</p>
-                <button onClick={() => history.push("/homepage")}>
+                {/* <button onClick={() => history.push("/homepage")}>
                   Explore Now
-                </button>
+                </button> */}
               </div>
             </div>
           </SwiperSlide>
@@ -92,9 +96,9 @@ const LandingPage = () => {
         <div className="product-grid">
           {[
             { name: "Diamond Ring", price: "$149", image: p1 },
-            { name: "Gold Bracelet", price: "$149", image: p2 },
-            { name: "Earrings", price: "$199", image: p3 },
-            { name: "Pendant", price: "$129", image: p4 },
+            { name: "Gold Bangles", price: "$149", image: p2 },
+            { name: "Pendant", price: "$199", image: p3 },
+            { name: "Earrings", price: "$129", image: p4 },
           ].map((item, index) => (
             <div className="card" key={index}>
               <img src={item.image} alt={item.name} />
@@ -109,11 +113,26 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta">
-        <h2>🔥 SAVE 50% OFF TODAY ONLY!</h2>
-        <p>Limited Stock Available. Order Now!</p>
-      </section>
+    
+{/* IMAGE SHOWCASE SECTION */}
+<section className="image-showcase">
+  <h1 className="showcase-h1">Discover the Art of Luxury Jewelry</h1>
+  <div className="showcase-grid">
+    
+    <div className="showcase-item">
+      <img src={l1} alt="jewelry" />
+    </div>
+
+    <div className="showcase-item">
+      <img src={p2} alt="jewelry" />
+    </div>
+
+    <div className="showcase-item">
+      <img src={p3} alt="jewelry" />
+    </div>
+
+  </div>
+</section>
 
       {/* <Footer /> */}
     </>

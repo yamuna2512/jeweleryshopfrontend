@@ -21,7 +21,7 @@
 .logo a {
   font-size: 25px;
   font-weight: bold;
-  color: #222;
+  color:brown;
   text-decoration: none;
 }
 
@@ -76,7 +76,7 @@ margin-left: 15px;
 }
 
 .search-bar button {
-  background: #a68459;
+  background: rgb(83, 10, 44);
   border: none;
   cursor: pointer;
   padding: 10px 16px;
@@ -135,7 +135,7 @@ line-height: 1.6;
 .footer-bottom {
   text-align: center;
   padding: 15px 0;
-  background:#332421;
+  background:rgb(46, 7, 7);
   font-size: 14px;
 }
 

@@ -73,55 +73,41 @@ const ProductCard = ({ product }) => {
 
 
   return (
-    <div
-      className="product-card"
-      onClick={() => history.push(`/product/${product.id}`)}
-    >
-      <div className="product-image-wrapper">
-        <img
-          src={product.product_image || "/placeholder.jpg"}
-          alt={product.product_name}
-        />
+  <div
+    className="product-card"
+    onClick={() => history.push(`/product/${product.id}`)}
+  >
+    {/* IMAGE SECTION */}
+    <div className="product-image-wrapper">
+      <img
+        src={imageUrl}
+        alt={product.product_name}
+        onError={handleImageError}
+      />
 
-        {/*  HEART */}
-        <FaHeart
-          
-          onClick={handleWishlist}
-          className="wishlist-heart"
-          style={{
-            color: isWishlisted ? "red" : "#ccc",
-            cursor: "pointer",
-          }}
-        />
-      </div>
-
-      <div className="product-info">
-        <h4>{product.product_name}</h4>
-        <p className="sku">SKU: {product.sku}</p>
-        <p className="weight">{product.weight} g</p>
-        <p className="price">₹ {product.price}</p>
-
-       {/* 🛒 CART BUTTON */}
-        <button
-          className="cart-btn"
-          onClick={handleCart}
-          style={{
-            marginTop: "10px",
-            padding: "8px",
-            width: "100%",
-            backgroundColor: isInCart ? "#ff4d4f" : "#dcac0e",
-            color: "#fff",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          {isInCart ? "Remove from Cart" : "Add to Cart"}
-        </button>
-
-
-      </div>
+      {/* HEART ICON */}
+      <FaHeart
+        onClick={handleWishlist}
+        className={`wishlist-heart ${isWishlisted ? "active" : ""}`}
+      />
     </div>
-  );
+
+    {/* PRODUCT INFO BELOW */}
+    <div className="product-info">
+      <h4>{product.product_name}</h4>
+
+      <p className="sku">SKU: {product.sku}</p>
+      <p className="weight">{product.weight} g</p>
+
+      <p className="price">$ {product.price}</p>
+
+      {/* CART BUTTON */}
+      <button className="cart-btn" onClick={handleCart}>
+        {isInCart ? "Remove from Cart" : "Add to Cart"}
+      </button>
+    </div>
+  </div>
+);
 };
 
 export default ProductCard;

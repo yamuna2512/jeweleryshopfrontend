@@ -51,7 +51,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        © 2025 JewelStore. All rights reserved.
+        © 2025 Divine Jewels. All rights reserved.
       </div>
     </footer>
   );

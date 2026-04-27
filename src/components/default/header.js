@@ -61,8 +61,8 @@ const handleSearch = (e) => {
         <nav className="nav-links">
           <Link to="/homepage"> <FaHome /><span>Home</span></Link>
           <Link to="/collections"> <FaGem /> Collections</Link>
-          <Link to="/about"> <FaInfoCircle /> About</Link>
-          <Link to="/contact"> <FaEnvelope />Contact</Link>
+          <Link to="/about"> <FaInfoCircle /> About Us</Link>
+          <Link to="/contact"> <FaEnvelope />Contact Us</Link>
         </nav>
 
        {/*  Search Bar */}
@@ -107,8 +107,8 @@ const handleSearch = (e) => {
             </>
           ) : (
             <>
-              <Link to="/sign-in">Signin</Link>
-              <Link to="/sign-up">Signup</Link>
+              <Link to="/sign-in">Access Account</Link>
+              <Link to="/sign-up">Sign Off</Link>
             </>
           )}
 

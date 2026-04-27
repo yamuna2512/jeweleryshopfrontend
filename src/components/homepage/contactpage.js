@@ -22,17 +22,17 @@ const ContactPage = () => {
           </p>
 
           <div className="contact-info">
-            <p><strong>Email:</strong> support@jewelshop.com</p>
-            <p><strong>Phone:</strong> +973 1234 5678</p>
-            <p><strong>Location:</strong> Karnatak, India</p>
+            <p><strong>Email:</strong> <a href="mailto:support@jewelshop.com">📧support@jewelshop.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+97312345678">📞+973 1234 5678</a></p>
+            <p><strong>Location:</strong> Karnataka, India</p>
           </div>
         </div>
 
         <div className="contact-right">
           <form>
             <input type="text" placeholder="Your Name" />
-            <input type="email" placeholder="Your Email" />
-            <textarea placeholder="Your Message"></textarea>
+            <input type="email" placeholder="📧Your Email" />
+            <textarea placeholder="📝Your Message"></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>
