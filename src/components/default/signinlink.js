@@ -112,9 +112,17 @@ const SignInLink = ({
 
             <p className="forgot">Forgot password?</p>
 
-            <button type="submit" className="signin-btn">
+            {/* <button type="submit" className="signin-btn">
               Sign In
-            </button>
+            </button> */}
+
+            <button
+                type="button"
+                className="signin-btn"
+                onClick={onSubmit}
+>
+                Sign In
+                </button>
           </form>
 
           <div className="auth-footer">
