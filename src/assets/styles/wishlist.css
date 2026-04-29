@@ -79,7 +79,7 @@
    ADD TO CART BUTTON
 ========================= */
 .wishlist-card button {
-  background: linear-gradient(135deg, #d4af37, #b8962e);
+  background: rgb(27, 1, 14);
   color: #fff;
   border: none;
   border-radius: 25px;

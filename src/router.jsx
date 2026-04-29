@@ -11,6 +11,7 @@ import ProductDetails from "./containers/productdetails";
 import Cart from "./containers/cart";
 import Wishlist from "./containers/wishlist";
 import AboutPage from "./components/homepage/aboutpage";
+import Collections from "./components/homepage/collections";
 import ContactPage from "./components/homepage/contactpage";
 import LandingPage from "./containers/landingpage";
 import { isUserSignedIn } from "./reducks/users/selectors";
@@ -33,6 +34,7 @@ const RouterConfig = () => (
     <Route exact path="/" component={LandingPage} />
     <Route exact path="/homepage" component={Homepage} />
     <Route path="/about" component={AboutPage} />
+    <Route path="/collections" component={Collections} />
     <Route path="/contact" component={ContactPage} />
     <Route path="/sign-in" component={SignIn} />
     <Route path="/sign-up" component={SignUp} />
