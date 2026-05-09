@@ -11,16 +11,32 @@ const api = new API();
 
 // Fetch all carts
 export const fetchCarts = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    // Check if user is signed in before making the request
+    const state = getState();
+    if (!state.users?.token) {
+      console.warn("User not authenticated - skipping cart fetch");
+      return Promise.resolve();
+    }
+
     return api.getCartItems().then((carts) => {
       dispatch(fetchCartsAction(carts));
+    }).catch((error) => {
+      console.error("FETCH CARTS ERROR:", error);
     });
   };
 };
 
 // Add to cart
 export const addCart = (addCartBody) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    // Check if user is signed in
+    const state = getState();
+    if (!state.users?.token) {
+      alert("Please sign in to add items to your cart");
+      return Promise.reject(new Error("User not authenticated"));
+    }
+
     return api.addToCart(addCartBody).then((cart) => {
       console.log("Cart API Response:", cart);
       dispatch(addCartAction(cart));
@@ -35,7 +51,14 @@ export const addCart = (addCartBody) => {
 
 // Update cart
 export const updateCart = (updateCartBody, cartId) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    // Check if user is signed in
+    const state = getState();
+    if (!state.users?.token) {
+      console.warn("User not authenticated - skipping cart update");
+      return Promise.reject(new Error("User not authenticated"));
+    }
+
     return api.updateCart(updateCartBody, cartId).then((cart) => {
       dispatch(updateCartAction(cart));
     });
@@ -60,8 +83,15 @@ export const clearCarts = () => {
 // 🛒 ADD TO CART (USED IN PRODUCT CARD)
 // ========================
 export const addToCart = (productId) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      // Check if user is signed in
+      const state = getState();
+      if (!state.users?.token) {
+        alert("Please sign in to add items to your cart");
+        return;
+      }
+
       const body = {
         product_id: productId,
         quantity: 1,

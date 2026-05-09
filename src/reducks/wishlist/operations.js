@@ -5,8 +5,15 @@ import API from "../../API";
 const api = new API();
 
 export const fetchWishlist = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      // Check if user is signed in before making the request
+      const state = getState();
+      if (!state.users?.token) {
+        console.warn("User not authenticated - skipping wishlist fetch");
+        return;
+      }
+
       const wishlist = await api.getWishlist();
       dispatch({ type: "FETCH_WISHLIST_SUCCESS", payload: wishlist });
     } catch (error) {
@@ -19,6 +26,13 @@ export const fetchWishlist = () => {
 export const toggleWishlist = (productId) => {
   return async (dispatch, getState) => {
     try {
+      // Check if user is signed in
+      const state = getState();
+      if (!state.users?.token) {
+        alert("Please sign in to add items to your wishlist");
+        return;
+      }
+
       const wishlist = getState().wishlist.list;
       const existing = wishlist.find((item) => item.product.id === productId);
 

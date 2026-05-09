@@ -8,22 +8,22 @@ import { Autoplay } from "swiper/modules";
 
 import Footer from "../components/default/footer";
 
-// ✅ PRODUCT IMAGES
+// PRODUCT IMAGES
 import p1 from "../assets/images/p1.png";
 import p2 from "../assets/images/p2.png";
 import p3 from "../assets/images/p3.png";
 import p4 from "../assets/images/p4.png";
 
-// ✅ SLIDER IMAGES
+//  SLIDER IMAGES
 import banner1 from "../assets/images/banner1.jpg";
-import banner2 from "../assets/images/banner2.jpg";
+import banner2 from "../assets/images/banner2.webp";
 import banner3 from "../assets/images/banner3.jpg";
 
-// ✅ landing down IMAGES
+//  landing down IMAGES
 
 import l1 from "../assets/images/l1.png";
 
-// ⚠️ use this if React Router v6
+//  use this if React Router v6
 import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {

@@ -14,11 +14,16 @@ api.interceptors.request.use((config) => {
   const raw = localStorage.getItem(LOGIN_USER_KEY);
 
   if (raw) {
-    const user = JSON.parse(raw);
-    if (user?.token) {
-      //  Correct header format for custom authentication
-      config.headers.Authorization = user.token;
-      console.log("ATTACHING TOKEN:", config.headers.Authorization);
+    try {
+      const user = JSON.parse(raw);
+      if (user?.token) {
+        // Attach token to Authorization header
+        config.headers.Authorization = user.token;
+        console.log("ATTACHING TOKEN:", config.headers.Authorization);
+      }
+    } catch (e) {
+      console.error("Error parsing stored user:", e);
+      localStorage.removeItem(LOGIN_USER_KEY);
     }
   }
 
@@ -29,8 +34,10 @@ api.interceptors.response.use(
   (response) => response.data,
   (error) => {
     if (error?.response?.status === 401) {
-      console.error("Unauthorized");
+      console.error("Unauthorized - Token invalid or expired");
       localStorage.removeItem(LOGIN_USER_KEY);
+      // Optionally redirect to login or trigger logout action
+      window.location.href = "/sign-in";
     }
     return Promise.reject(error);
   }
