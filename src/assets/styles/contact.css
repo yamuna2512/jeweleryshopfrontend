@@ -61,12 +61,23 @@
 }
 
 .contact-right button {
-  padding: 12px;
+  /* padding: 12px;
+  background: rgb(46, 7, 7);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s; */
+padding: 10px 22px; /* smaller height and width */
   background: rgb(46, 7, 7);
   color: white;
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 14px;     /* smaller text */
+  border-radius: 4px;  /* optional */
+  width: fit-content;   /* keeps button small */
+  display: inline-block;
+    /* prevents full width */
 }
 
 .contact-right button:hover {

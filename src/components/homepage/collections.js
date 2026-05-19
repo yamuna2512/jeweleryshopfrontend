@@ -47,8 +47,8 @@ const Collections = () => {
     <div className="collections-page">
 
       {/* HERO SECTION */}
-      <div className="collections-hero">
-        <div className="hero-content">
+      <div className="collections-hero1">
+        <div className="hero-content1">
           <h1>Explore Our Collections</h1>
           <p>
             Discover handcrafted jewelry designed to celebrate every moment.

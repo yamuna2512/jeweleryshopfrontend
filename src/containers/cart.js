@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import CartCard from "../components/cart/cartcard";
 import { fetchCarts, updateCart, removeCart } from "../reducks/cart/operations";
 import { getCartItems, getCartTotal } from "../reducks/cart/selectors";
+import { useHistory } from "react-router-dom";
 import "../assets/styles/cart.css";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const carts = useSelector(getCartItems);
+  const history = useHistory();
   const total = useSelector(getCartTotal);
 
   useEffect(() => {
@@ -31,11 +33,30 @@ const Cart = () => {
         />
       ))}
 
-      {carts.length > 0 && (
+      {/* {carts.length > 0 && (
         <div className="cart-total">Total: ₹ {total}</div>
-      )}
+      )} */}
+
+    {carts.length > 0 && (
+  <div className="cart-summary">
+    <div className="cart-total">
+      Total: ₹ {total}
+    </div>
+
+    <button
+      className="checkout-btn"
+      onClick={() => history.push("/checkout")}
+    >
+      Proceed To Checkout
+    </button>
+  </div>
+)}
+
+
     </div>
   );
 };
 
 export default Cart;
+
+

@@ -87,4 +87,20 @@ export default class API {
     api.post("/products/wishlist/add/", { product_id: productId });
   removeWishlist = (wishlistId) =>
     api.delete(`/products/wishlist/remove/${wishlistId}/`);
+
+
+/* ---------- ORDER ---------- */
+
+createOrder = (data) =>
+  api.post("/products/create-order/", data);
+
+getMyOrders = () =>
+  api.get("/products/my-orders/");
+
+getOrderDetails = (id) =>
+  api.get(`/products/order-details/${id}/`);
+
+cancelOrder = (id) =>
+  api.put(`/products/cancel-order/${id}/`);
+
 }

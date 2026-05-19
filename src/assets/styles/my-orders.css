@@ -1,0 +1,147 @@
+.my-orders-page {
+  min-height: 100vh;
+  background: #f8f5f0;
+  padding: 70px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.orders-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.orders-title {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 50px;
+  color: #5c3b1e;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.order-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-top h3 {
+  color: #3d220f;
+  margin-bottom: 8px;
+}
+
+.order-top p {
+  color: #888;
+}
+
+.status {
+  padding: 10px 18px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status.Pending {
+  background: #fff4db;
+  color: #9b6b00;
+}
+
+.status.Cancelled {
+  background: #ffe4e4;
+  color: #d11a1a;
+}
+
+.status.Delivered {
+  background: #ddffea;
+  color: #0a8f47;
+}
+
+.order-middle {
+  margin-top: 30px;
+  display: flex;
+  gap: 60px;
+}
+
+.order-middle span {
+  color: #888;
+  font-size: 14px;
+}
+
+.order-middle h4 {
+  margin-top: 8px;
+  color: #5c3b1e;
+  font-size: 22px;
+}
+
+.order-buttons {
+  margin-top: 35px;
+  display: flex;
+  gap: 15px;
+}
+
+.details-btn,
+.cancel-btn {
+  border: none;
+  padding: 14px 26px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.details-btn {
+  background: rgb(64, 21, 5);
+  color: white;
+}
+
+.cancel-btn {
+  background: #f8e3e3;
+  color: #c62828;
+}
+
+.details-btn:hover,
+.cancel-btn:hover {
+  transform: translateY(-2px);
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 24px;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+
+  .order-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .order-middle {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .order-buttons {
+    flex-direction: column;
+  }
+
+  .details-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+}

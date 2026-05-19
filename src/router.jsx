@@ -15,7 +15,9 @@ import Collections from "./components/homepage/collections";
 import ContactPage from "./components/homepage/contactpage";
 import LandingPage from "./containers/landingpage";
 import { isUserSignedIn } from "./reducks/users/selectors";
-
+import Checkout from  "./containers/checkout";
+import OrderSuccess from "./containers/ordersuccess";
+import MyOrders from "./containers/myorders";
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isSignedIn = useSelector(isUserSignedIn);
 
@@ -39,10 +41,14 @@ const RouterConfig = () => (
     <Route path="/sign-in" component={SignIn} />
     <Route path="/sign-up" component={SignUp} />
     <Route path="/product/:id" component={ProductDetails} />
+     <Route path="/ordersuccess" component={OrderSuccess} />
 
     {/* Protected */}
     <PrivateRoute path="/cart" component={Cart} />
     <PrivateRoute path="/wishlist" component={Wishlist} />
+    <PrivateRoute path="/checkout" component={Checkout} />
+    <PrivateRoute path="/my-orders" component={MyOrders} />
+   
   </Switch>
 );
 

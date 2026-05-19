@@ -40,9 +40,11 @@ const Wishlist = () => {
       <h2>My Wishlist</h2>
 
       {wishlist.length === 0 && <p>No items in wishlist</p>}
-
+      
       {wishlist.map((item) => (
         <div key={item.id} className="wishlist-card">
+        
+
           <img src={item.product.product_image} alt={item.product.product_name} />
           <h4>{item.product.product_name}</h4>
           <p>₹ {item.product.price}</p>
