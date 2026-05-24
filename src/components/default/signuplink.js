@@ -74,6 +74,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../assets/styles/signup.css";
+import { FaGem } from "react-icons/fa";
 
 const SignupLink = ({
   firstName,
@@ -109,7 +110,8 @@ const SignupLink = ({
         <div className="auth-card">
 
           <div className="logo">
-            💎 JEWELRY
+            <FaGem className="diamond-icon" />
+            JEWELRY
           </div>
 
           <h2 className="title">

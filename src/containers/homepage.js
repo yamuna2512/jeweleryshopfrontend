@@ -50,22 +50,6 @@ const HomePage = () => {
 }, [location.state]);
 
 
-//   //  PRODUCT FILTER LOGIC
-//  const filteredProducts = products.filter((product) => {
-//   // No category selected → show all
-//   if (!activeCategory) return true;
-
-//   // Category selected but "All" subcategory → show all category products
-//   if (!activeSubCategory || activeSubCategory === "all") {
-//     return product.category === activeCategory;
-//   }
-
-//   // Specific subcategory selected
-//   return (
-//     product.category === activeCategory &&
-//     product.subcategory === activeSubCategory
-//   );
-// });
 
 
 const isFiltering = activeCategory || activeSubCategory;

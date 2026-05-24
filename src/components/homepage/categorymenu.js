@@ -1,6 +1,17 @@
 
 import React from "react";
 import "../../assets/styles/homepage.css";
+import {
+  FaGem,
+  FaRing,
+  FaCrown
+} from "react-icons/fa";
+
+import {
+  GiDiamondRing,
+  GiNecklace
+} from "react-icons/gi";
+
 
 const CategoryMenu = ({
   categories,
@@ -22,7 +33,31 @@ const CategoryMenu = ({
             }`}
             onMouseEnter={() => onCategoryHover(cat.id)}
           >
-            {cat.category_name}
+            {/* {cat.category_name} */}
+            <span className="category-content">
+
+  {cat.category_name === "Gold" && (
+    <FaCrown className="cat-icon" />
+  )}
+
+  {cat.category_name === "Silver" && (
+    <GiDiamondRing className="cat-icon" />
+   
+  )}
+
+  {cat.category_name === "Diamond" && (
+    <FaGem className="cat-icon" />
+  )}
+
+  {cat.category_name === "Platinum" && (
+    <FaRing className="cat-icon" />
+  )}
+
+ 
+
+  {cat.category_name}
+
+</span>
 
             {/* SUBCATEGORY DROPDOWN */}
             {activeCategory === cat.id && (

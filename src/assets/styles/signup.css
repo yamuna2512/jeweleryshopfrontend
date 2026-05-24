@@ -8,6 +8,7 @@
   background: #fff;
   overflow: hidden;
   border-radius: 10px;
+  
 }
 
 /* LEFT SIDE IMAGE */
@@ -78,7 +79,8 @@
 
 .auth-right {
   flex: 1;
-  height: 100%;
+   padding: 40px;
+  height: 100%; /* IMPORTANT */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,24 +91,42 @@
 
 .auth-card {
   width: 100%;
-  max-width: 320px;
+  max-width: 330px;
 }
 
 /* LOGO */
 
 .logo {
-  color: #b08d57;
+  /* color: #b08d57;
   margin-bottom: 10px;
   font-size: 30px;
-  font-weight: bold;
+  font-weight: bold; */
+   
+  color: #8b5e3c;
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+.diamond-icon {
+  color: #8b5e3c;
+  font-size: 32px;
 }
 
 /* TITLE */
 
 .title {
-  font-size: 28px;
+ font-size: 26px;
   margin-bottom: 20px;
   color: #4b2e1e;
+/* 
+  text-align: center; */
 }
 
 /* INPUTS */
@@ -123,16 +143,32 @@
 
 /* BUTTON */
 
+/* BUTTON */
+
 .signin-btn {
-  width: 100%;
-  padding: 12px;
-  border-radius: 25px;
+  width: 130px;
+  height: 42px;
+
+  display: block;
+  margin: 20px auto 0;
+
   border: none;
-  background: rgb(37, 6, 6);
+  border-radius: 30px;
+
+  background: rgb(46, 7, 7);
   color: white;
-  font-size: 16px;
+
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
+}
+
+.signin-btn:hover {
+  background: #5c1a1a;
+  transform: translateY(-2px);
 }
 
 .signin-btn:hover {

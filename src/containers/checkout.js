@@ -33,14 +33,43 @@ const Checkout = () => {
 
      };
 
-  const handleOrder = async () => {
+const handleOrder = async () => {
 
-    const result = await dispatch(createOrder(formData));
+  // VALIDATION
 
-    if (result) {
-      history.push("/ordersuccess");
-    }
-  };
+  if (
+    !formData.customer_name ||
+    !formData.customer_phone ||
+    !formData.address ||
+    !formData.pin_code ||
+    !formData.city ||
+    !formData.state
+  ) {
+
+    alert("Please fill all shipping details");
+
+    return;
+  }
+
+  // PLACE ORDER
+
+  const result = await dispatch(createOrder(formData));
+
+  if (result) {
+    history.push("/ordersuccess");
+  }
+};
+
+
+
+  // const handleOrder = async () => {
+
+  //   const result = await dispatch(createOrder(formData));
+
+  //   if (result) {
+  //     history.push("/ordersuccess");
+  //   }
+  // };
 
   return (
     <div className="checkout-page">
@@ -60,6 +89,7 @@ const Checkout = () => {
               name="customer_name"
               placeholder="Full Name"
               onChange={handleChange}
+              required
             />
 
             <input
@@ -67,12 +97,14 @@ const Checkout = () => {
               name="customer_phone"
               placeholder="Phone Number"
                onChange={handleChange}
+               required
             />
 
             <textarea
               name="address"
               placeholder="Address"
               onChange={handleChange}
+              required
             />
 
             <input
@@ -80,6 +112,7 @@ const Checkout = () => {
               name="pin_code"
               placeholder="Pin Code"
               onChange={handleChange}
+              required
             />
 
             <input
@@ -87,6 +120,7 @@ const Checkout = () => {
               name="building_type"
               placeholder="Apartment / Villa"
               onChange={handleChange}
+              required
             />
 
             <input
@@ -94,6 +128,7 @@ const Checkout = () => {
               name="city"
               placeholder="City"
               onChange={handleChange}
+              required
             />
 
             <input
@@ -101,6 +136,7 @@ const Checkout = () => {
               name="state"
               placeholder="State"
               onChange={handleChange}
+              required
             />
 
           </div>

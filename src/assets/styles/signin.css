@@ -1,200 +1,4 @@
-/* Sign In Page Styling */
-/* 
-.auth-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f5f6fa;
-}
 
-.auth-box {
-  width: 380px;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.auth-box h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #222;
-}
-
-.auth-box input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-}
-
-.auth-box input:focus {
-  border-color: #d4af37; /* gold color */
-  /* outline: none;
-}
-
-.auth-box button {
-  width: 100%;
-  padding: 12px;
-  background: #d4af37;
-  color: #fff;
-  font-size: 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.auth-box button:hover {
-  background: #b8962e;
-}
-
-.auth-footer {
-  margin-top: 15px;
-  text-align: center;
-}
-
-.auth-footer a {
-  color: #d4af37;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.auth-footer a:hover {
-  text-decoration: underline;
-}  */
- 
-/* .................... */
-/* BACKGROUND */
-/* .auth-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
- background: url("../images/jewelry-bg.png") no-repeat center/cover;
-  position: relative;
-} */
-
-/* GLASS OVERLAY */
-/* .auth-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(6px);
-} */
-
-/* CARD */
-/* .auth-card {
-  position: relative;
-  width: 400px;
-  padding: 45px 30px;
-  border-radius: 25px;
-
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-
-  box-shadow: 
-    0 20px 60px rgba(0,0,0,0.15),
-    0 5px 15px rgba(0,0,0,0.05);
-
-  text-align: center;
-} */
-
-/* LOGO */
-/* .logo {
- font-family: "Cinzel", serif;
-  color: #b08d57;
-  letter-spacing: 3px;
-  font-size: 18px;
-} */
-
-/* TITLE */
-/* .title {
-  font-family: "Playfair Display", serif;
-  font-size: 32px;
-  color: #4b2e1e;
-  margin-bottom: 25px;
-} */
-
-/* FORM */
-/* form {
-  margin-bottom: 20px;
-} */
-
-/* INPUT */
-/* .input-group {
-  /* margin-bottom: 20px; */
-   /* position: relative; */
-/* }  */
-
-/* .input-group input {
- width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 18px;
-  box-sizing: border-box;
-  border-radius: 30px;
-  border: 1px solid #e0d6c8;
-
-  background: #fdfaf6;
-  font-size: 14px;
-  transition: all 0.3s ease;
-} */
-
-/* .input-group input:focus {
-  border-color: #8b5e3c;
-  box-shadow: 0 0 8px rgba(139, 94, 60, 0.3);
-} */
-
-/* FORGOT */
-/* .forgot {
-  text-align: right;
-  font-size: 13px;
-  /* color: #888; */
-   /* color: #7a6a5a;
-  margin-bottom: 15px;
-  cursor: pointer;
-} */
-
-/* BUTTON */
-/* .signin-btn {
-  width: 100%;
-  padding: 14px;
-  box-sizing: border-box;
-  background: linear-gradient(135deg, #9c6b3f, #5a3825);
-  color: #fff;
-
-  border: none;
-  border-radius: 30px;
-
-  font-size: 16px;
-  letter-spacing: 1px;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.signin-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(90, 56, 37, 0.3);
-} */
-/* FOOTER */
-/* .auth-footer {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.auth-footer a {
-  color: #8b5e3c;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.auth-footer a:hover {
-  text-decoration: underline;
-}  */ 
 
 /* FULL PAGE BACKGROUND */
 .auth-main {
@@ -208,19 +12,17 @@
 /* CENTER CONTAINER */
 .auth-container {
   display: flex;
-  width: 900px;
-  height: 300px; /* FIXED HEIGHT */
+  width: 500px;
+  height: 450px;   /* increased height */
+
   border-radius: 25px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-}
 
-  /* WRAPPER */
-/* .auth-wrapper {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-} */
+  background: white;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+  
 
 /* LEFT SIDE IMAGE */
 .auth-left {
@@ -280,7 +82,8 @@
 /* RIGHT SIDE */
 .auth-right {
   flex: 1;
-  height: 100%; /* IMPORTANT */
+   padding: 25px;
+  /* height: 100%;  */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,27 +93,58 @@
 /* CARD */
 .auth-card {
   width: 100%;
-  max-width: 280px;
+  max-width: 330px;
+  padding: 0;
 }
 /* LOGO */
 .logo {
-  color: #b08d57;
-  margin-bottom: 10px;
+  /* color:brown;
+  margin-bottom: 10px; */
+ color:  rgb(37, 6, 6);
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
+
+.diamond-icon {
+  color:  rgb(37, 6, 6);
+  font-size: 32px;
+}
+
+
 /* TITLE */
 .title {
-  font-size: 26px;
-  margin-bottom: 20px;
-  color: #4b2e1e;
+  font-size: 24px;
+  color: rgb(37, 6, 6);
+
+  text-align: center;
+
+  margin-top: 0;
+  margin-bottom: 15px;
 }
 
 /* INPUT */
 .input-group input {
-  width: 100%;
+  /* width: 100%;
   padding: 12px;
   margin-bottom: 15px;
   border-radius: 25px;
+  border: 1px solid #ddd; */
+
+  width: 100%;
+  padding: 10px 14px;
+
+  margin-bottom: 12px;   /* reduced */
+
+  border-radius: 25px;
   border: 1px solid #ddd;
+
+  font-size: 14px;
 }
 
 /* FORGOT */
@@ -322,15 +156,35 @@
 
 
 /* BUTTON */
+
 .signin-btn {
-  width: 100%;
-  padding: 10px;
-  border-radius: 25px;
+  width: 130px;
+  height: 42px;
+
+  display: block;
+  margin: 20px auto 0;
+
   border: none;
+  border-radius: 30px;
+
   background: rgb(37, 6, 6);
   color: white;
+
   font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
   cursor: pointer;
+  transition: 0.3s ease;
+   box-shadow: 0 4px 12px rgba(62, 39, 35, 0.3);
+}
+
+.signin-btn:hover {
+  background: #5c1a1a;
+  transform: translateY(-2px);
+}
+.signin-btn:hover {
+  background-color: #5a1a1a;
 }
 
 

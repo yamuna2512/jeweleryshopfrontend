@@ -85,7 +85,7 @@ const cartCount = useSelector(
 
     dispatch(signOut());
 
-    history.push("/sign-in");
+    history.push("/");
   };
 
   
@@ -112,7 +112,7 @@ const cartCount = useSelector(
         {/* ---------------- LOGO ---------------- */}
 
         <div className="logo">
-
+         <FaGem className="brand-icon" />
           <Link to="/">
             Divine Jewels
           </Link>
@@ -224,6 +224,8 @@ const cartCount = useSelector(
 
           </Link>
 
+          
+
           {/* ---------------- AUTH ---------------- */}
 
           {isSignedIn ? (
@@ -233,6 +235,16 @@ const cartCount = useSelector(
               <span className="user-name">
                 Hello, {firstName}
               </span>
+
+              {/* MY ORDERS BUTTON */}
+
+  <Link to="/my-orders">
+
+    <button className="orders-btn">
+      My Orders
+    </button>
+
+  </Link>
 
               <button
                 className="logout-btn"
@@ -248,7 +260,7 @@ const cartCount = useSelector(
             <div className="auth-links">
 
               <Link to="/sign-in">
-                Access Account
+                Sign In
               </Link>
 
               <Link to="/sign-up">

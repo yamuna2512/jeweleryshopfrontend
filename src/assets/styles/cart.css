@@ -105,16 +105,16 @@
 }
 
 .checkout-btn {
-  background: rgb(59, 2, 5);
+  background: rgb(36, 6, 6);
    cursor : pointer;
   transition: 0.3s ease;
   color: white;
   border: none;
-  padding: 14px 30px;
-  border-radius: 50px;
-  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: 36px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   
 }
 
