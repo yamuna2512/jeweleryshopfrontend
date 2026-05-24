@@ -225,165 +225,301 @@ display: flex;
 }
 
 
-/* Banner wrapper */
+/* =========================
+   BANNER
+========================= */
+
 .homepage-banner {
+
   width: 100%;
-  /* height: 520px; */
-   /* padding: 10px 20px 0; */
+
+  padding: 10px 10px 0;
 }
 
 /* Banner container */
-.banner-slide {
-position: relative;
-  width: 100%;
-  height: 620px;
-  overflow: hidden;
-  border-radius: 30px;
 
-  /* width: 100%;
-  height: clamp(220px, 35vw, 420px); */
+.banner-slide {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 620px;
+
+  overflow: hidden;
+
+  border-radius: 30px;
 }
 
 /* Banner image */
+
 .banner-slide img {
+
   width: 100%;
+
   height: 100%;
-  object-fit:cover;       /* fills full width */
+
+  object-fit: cover;
+
   object-position: center;
-  /* display: block; */
+
+  display: block;
 }
 
+/* Dark overlay */
 
+.banner-slide::after {
 
-/* Banner text */
+  content: "";
 
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.45)
+  );
+}
+
+/* =========================
+   BANNER TEXT
+========================= */
 
 .banner-text {
-  /* position: absolute;
+
+  position: absolute;
+
   top: 50%;
-  right: 8%;
-  transform: translateY(-50%);
-  color: #fff;
-  text-align: right;
-  max-width: 400px; */
-    position: absolute;
-  top: 50%;
+
   right: 7%;
+
   transform: translateY(-50%);
+
   z-index: 2;
 
-  text-align: center;
+  text-align: right;
+
   color: white;
 
-  max-width: 450px;
+  max-width: 500px;
+
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Small text */
+
+.banner-small {
+
+  font-size: 28px;
+
+  font-weight: 400;
+
+  margin-bottom: 10px;
+
+  color: #f5e6c8;
+
+  letter-spacing: 2px;
 }
 
 /* Main heading */
-.banner-text h1 {
-  font-size: 42px;
+
+.banner-title {
+
+  font-size: 72px;
+
   font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  line-height: 1.2;
+
+  line-height: 1.1;
+
+  margin-bottom: 18px;
+
+  color: #d4a24c;
+
+  font-family: "Cormorant Garamond", serif;
 }
 
+/* Subtitle */
 
+.banner-subtitle {
 
-/* Sub text */
-.banner-text p {
-  font-size: 16px;
+  font-size: 22px;
+
   font-weight: 400;
-  color: #f5f5f5;
-  margin-bottom: 20px;
+
+  color: #f8f8f8;
+
+  margin-bottom: 30px;
+
+  letter-spacing: 1px;
 }
 
-.banner-text {
-  position: absolute; 
-  top: 50%;
-  right: 5%; 
-  transform: translateY(-50%); 
-  color: white; 
-  text-align: right; 
-  font-weight: 800; 
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.6); 
+/* Luxury button */
+
+.banner-btn {
+
+  background: linear-gradient(
+    135deg,
+    #d4a24c,
+    #8b5e34
+  );
+
+  color: white;
+
+  border: none;
+
+  padding: 14px 34px;
+
+  border-radius: 50px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
+.banner-btn:hover {
 
-/* ---------------- RESPONSIVE ---------------- */
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+
+  .banner-slide {
+
+    height: 520px;
+  }
+
+  .banner-title {
+
+    font-size: 58px;
+  }
+}
+
 @media (max-width: 992px) {
+
   .homepage-content {
+
     flex-direction: column;
   }
 
   .homepage-left {
+
     width: 100%;
+
     margin-bottom: 20px;
   }
 
   .homepage-right {
+
     width: 100%;
   }
 
-  /* .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  } */
-}
-
-@media (max-width: 768px) {
- @media (max-width: 992px) {
-
   .banner-slide {
+
     height: 420px;
   }
 
-  .banner-title {
-    font-size: 52px;
-  }
-
-  .banner-subtitle {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .banner-slide {
-    height: 300px;
-  }
-
   .banner-text {
-    right: 5%;
-    left: 5%;
-  }
 
-  .banner-small {
-    font-size: 16px;
+    right: 5%;
   }
 
   .banner-title {
-    font-size: 34px;
+
+    font-size: 48px;
   }
 
   .banner-subtitle {
-    font-size: 15px;
-  }
 
-  .banner-btn {
-    padding: 10px 24px;
-    font-size: 14px;
+    font-size: 18px;
   }
-}
 
   .product-grid {
+
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+
+  .banner-slide {
+
+    height: 320px;
+
+    border-radius: 20px;
+  }
+
+  .banner-text {
+
+    right: 5%;
+
+    left: 5%;
+
+    text-align: center;
+  }
+
+  .banner-small {
+
+    font-size: 18px;
+  }
+
+  .banner-title {
+
+    font-size: 34px;
+  }
+
+  .banner-subtitle {
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+  }
+
+  .banner-btn {
+
+    padding: 10px 24px;
+
+    font-size: 14px;
+  }
+
   .product-grid {
-    grid-template-columns: repeat(1, 1fr);
+
+    grid-template-columns: 1fr;
   }
 }
 
+@media (max-width: 480px) {
 
-  
+  .banner-slide {
+
+    height: 260px;
+  }
+
+  .banner-title {
+
+    font-size: 28px;
+  }
+
+  .banner-small {
+
+    font-size: 14px;
+  }
+
+  .banner-subtitle {
+
+    font-size: 12px;
+  }
+}
