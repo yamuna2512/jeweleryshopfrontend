@@ -229,7 +229,7 @@ display: flex;
 .homepage-banner {
   width: 100%;
   /* height: 520px; */
-   padding: 10px 20px 0;
+   /* padding: 10px 20px 0; */
 }
 
 /* Banner container */
@@ -254,21 +254,6 @@ position: relative;
 }
 
 
-/* DARK LUXURY OVERLAY */
-.banner-slide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.15),
-    rgba(0,0,0,0.05),
-    rgba(0,0,0,0.55)
-  );
-
-  z-index: 1;
-}
 
 /* Banner text */
 
