@@ -15,6 +15,7 @@ import {
   FaGem,
   FaEnvelope,
 } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
 import "../../assets/styles/headerfooter.css";
 
@@ -87,8 +88,9 @@ const cartCount = useSelector(
 
     history.push("/");
   };
-
+/* drop down menu for user section */
   
+  const [showDropdown, setShowDropdown] = useState(false);
 
   /* ---------------- SEARCH ---------------- */
 
@@ -227,33 +229,31 @@ const cartCount = useSelector(
           
 
           {/* ---------------- AUTH ---------------- */}
+     {isSignedIn ? (
+             <div className="user-section">
 
-          {isSignedIn ? (
+               <span className="user-name">
+                 Hello, {firstName}
+               </span>
 
-            <div className="user-section">
+               {/* MY ORDERS BUTTON */}
 
-              <span className="user-name">
-                Hello, {firstName}
-              </span>
+   <Link to="/my-orders">
 
-              {/* MY ORDERS BUTTON */}
+     <button className="orders-btn">
+       My Orders
+     </button>
 
-  <Link to="/my-orders">
-
-    <button className="orders-btn">
-      My Orders
-    </button>
-
-  </Link>
+   </Link>
 
               <button
-                className="logout-btn"
-                onClick={handleSignOut}
-              >
+                 className="logout-btn"
+                 onClick={handleSignOut}
+               >
                 Sign Out
-              </button>
+               </button>
 
-            </div>
+           </div> 
 
           ) : (
 
